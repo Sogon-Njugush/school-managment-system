@@ -1,3 +1,4 @@
+import FormModal from '@/app/components/FormModal';
 import Pagination from '@/app/components/Pagination';
 import Table from '@/app/components/Table';
 import TableSearch from '@/app/components/TableSearch'
@@ -36,9 +37,15 @@ const SubjectListPage = () => {
               <Image src={"/edit.png"} height={16} width={16} alt=''/>
             </button>
             </Link>
-            { role === "admin" && (<button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple'>
-              <Image src={"/delete.png"} height={16} width={16} alt=''/>
-            </button>)}
+            { role === "admin" && (
+            //   <button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple'>
+            //   <Image src={"/delete.png"} height={16} width={16} alt=''/>
+            // </button>
+            <>
+            <FormModal table='subject' type='update' data={item}/>
+            <FormModal table='subject' type='delete' id={item.id}/>
+            </>
+          )}
           </div>
         </td>
       </tr>
@@ -58,9 +65,12 @@ const SubjectListPage = () => {
             <button className='w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow'>
               <Image src="/sort.png" width={14} height={14} alt=''/>
             </button>
-            {role === "admin" && (<button className='w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow'>
-              <Image src="/plus.png" width={14} height={14} alt=''/>
-            </button>)}
+            {role === "admin" && (
+            //   <button className='w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow'>
+            //   <Image src="/plus.png" width={14} height={14} alt=''/>
+            // </button>
+            <FormModal table='subject' type='create'/>
+          )}
           </div>
           </div>
           </div>

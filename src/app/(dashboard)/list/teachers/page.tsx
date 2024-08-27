@@ -1,3 +1,4 @@
+import FormModal from '@/app/components/FormModal';
 import Pagination from '@/app/components/Pagination';
 import Table from '@/app/components/Table';
 import TableSearch from '@/app/components/TableSearch'
@@ -54,14 +55,20 @@ const TeacherListPage = () => {
         <td className='hidden md:table-cell'>{item.address}</td>
         <td>
           <div className='flex items-center gap-2'>
-            <Link href={`/list/teachers/${item.id}`}>
+            {/* <Link href={`/list/teachers/${item.id}`}>
             <button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky'>
               <Image src={"/view.png"} height={16} width={16} alt=''/>
             </button>
-            </Link>
-            { role === "admin" && (<button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple'>
-              <Image src={"/delete.png"} height={16} width={16} alt=''/>
-            </button>)}
+            </Link> */}
+            { role === "admin" && (
+            //   <button className='w-7 h-7 flex items-center justify-center rounded-full bg-lamaPurple'>
+            //   <Image src={"/delete.png"} height={16} width={16} alt=''/>
+            // </button>
+            <>
+            <FormModal table='teacher' type='update' data={item}/>
+            <FormModal table='teacher' type='delete' id={item.id}/>
+            </>
+          )}
           </div>
         </td>
       </tr>
@@ -81,9 +88,12 @@ const TeacherListPage = () => {
             <button className='w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow'>
               <Image src="/sort.png" width={14} height={14} alt=''/>
             </button>
-             { role === 'admin' && ( <button className='w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow'>
-              <Image src="/plus.png" width={14} height={14} alt=''/>
-            </button> )}
+             { role === 'admin' && (
+            // <button className='w-8 h-8 flex items-center justify-center rounded-full bg-lamaYellow'>
+            //   <Image src="/plus.png" width={14} height={14} alt=''/>
+            // </button>
+            <FormModal table='teacher' type='create'/>
+           )}
           </div>
           </div>
           </div>
