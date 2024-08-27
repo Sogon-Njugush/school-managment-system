@@ -5,7 +5,6 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import InputField from '../InputField';
-import { error } from 'console';
 import Image from 'next/image';
 
 const schema = z.object({
